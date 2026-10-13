@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+
+    --primary: #0f172a;
+    --primary-foreground: #ffffff;
+
+    --accent: #ea580c; /* Automotive Flame Orange */
+    --accent-hover: #c2410c;
+    --accent-foreground: #ffffff;
+
+    --secondary: #334155;
+    --secondary-foreground: #f8fafc;
+
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #ea580c;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #090d16;
+    --foreground: #f8fafc;
+
+    --card: #111827;
+    --card-foreground: #f8fafc;
+
+    --popover: #111827;
+    --popover-foreground: #f8fafc;
+
+    --primary: #f8fafc;
+    --primary-foreground: #0f172a;
+
+    --accent: #f97316;
+    --accent-hover: #ea580c;
+    --accent-foreground: #ffffff;
+
+    --secondary: #1e293b;
+    --secondary-foreground: #f8fafc;
+
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+
+    --border: #1f2937;
+    --input: #1f2937;
+    --ring: #f97316;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar for dense tables and drawers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Smooth badge glow effects */
+.badge-verified {
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+}
+.badge-accent {
+  box-shadow: 0 0 12px rgba(234, 88, 12, 0.25);
+}
