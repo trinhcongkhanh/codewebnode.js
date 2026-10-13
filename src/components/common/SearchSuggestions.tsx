@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, Wrench, ArrowRight, Loader2, X } from "lucide-react";
 import { Product } from "@/types/product";
-import { getStoredProducts } from "@/data/storeManager";
+import { getStoredProducts } from "@/services";
 import { formatVND } from "@/lib/utils";
 
 const POPULAR_SEARCH_TERMS = [

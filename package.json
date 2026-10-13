@@ -1,6 +1,7 @@
 {
-  "name": "my-motor-ecommerce",
-  "version": "0.1.0",
+  "name": "motoparts-pro",
+  "version": "1.0.0",
+  "description": "E-Commerce phụ tùng xe máy chính hãng & tra cứu tương thích xe chuẩn kỹ thuật (Next.js 16 App Router)",
   "private": true,
   "scripts": {
     "dev": "next dev",

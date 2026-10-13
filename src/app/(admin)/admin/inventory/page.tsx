@@ -18,7 +18,7 @@ import {
   getStoredInventory,
   updateInventory,
   subscribeToStoreUpdates,
-} from "@/data/storeManager";
+} from "@/services";
 
 export default function AdminInventoryPage() {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);

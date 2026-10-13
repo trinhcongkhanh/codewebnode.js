@@ -22,7 +22,7 @@ import {
   upsertProduct,
   deleteProduct,
   subscribeToStoreUpdates,
-} from "@/data/storeManager";
+} from "@/services";
 import { formatVND } from "@/lib/utils";
 
 export default function AdminProductsPage() {

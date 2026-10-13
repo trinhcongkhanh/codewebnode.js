@@ -1,31 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Shipping Webhook Boundary (GHN / GHTK / Viettel Post)
+ * POST /api/webhook/shipping
  *
- * Security Notice:
- * Webhook callbacks from logistics carriers must validate authentication tokens
- * before updating package tracking and order milestones.
- * For local demonstration, this returns 501 Not Implemented.
+ * Webhook endpoint for shipping carrier callbacks (GHN, GHTK, Viettel Post…).
+ * Called when shipment status changes (e.g. picked up, in transit, delivered).
+ * TODO: Verify carrier token before processing.
  */
 export async function POST(request: NextRequest) {
-  const token = request.headers.get("x-shipping-token");
+  try {
+    const body = await request.json();
 
-  if (!token) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Thiếu mã xác thực từ đối tác vận chuyển (Missing shipping carrier token)",
-      },
-      { status: 401 }
-    );
+    // TODO: Verify carrier secret token from request headers
+    // const token = request.headers.get("x-ghn-token") ?? request.headers.get("x-ghtk-token");
+    // if (token !== process.env.SHIPPING_WEBHOOK_TOKEN) {
+    //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    // }
+
+    console.log("[webhook/shipping] Received payload:", body);
+
+    // TODO: Update order shipping status and tracking code
+    // await updateOrderStatus(body.order_code, mapCarrierStatus(body.status));
+
+    return NextResponse.json({ received: true });
+  } catch {
+    return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
   }
-
-  return NextResponse.json(
-    {
-      success: false,
-      message: "Shipping webhook endpoint is architected for OpenNext AWS Lambda but requires carrier API token.",
-    },
-    { status: 501 }
-  );
 }

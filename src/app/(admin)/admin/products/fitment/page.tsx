@@ -21,7 +21,7 @@ import {
   addProductFitment,
   removeProductFitment,
   subscribeToStoreUpdates,
-} from "@/data/storeManager";
+} from "@/services";
 import { formatVND } from "@/lib/utils";
 
 function FitmentAdminContent() {

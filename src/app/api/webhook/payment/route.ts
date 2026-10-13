@@ -1,32 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Payment Webhook Boundary (VietQR / MoMo / ZaloPay)
+ * POST /api/webhook/payment
  *
- * Security Notice:
- * In production AWS Lambda execution, this endpoint must verify HMAC-SHA256 signatures
- * using environment secrets before processing any order status mutation.
- * For local demonstration without verified payment providers, this returns 501 Not Implemented.
+ * Webhook endpoint for payment gateway callbacks (MoMo, ZaloPay, VNPay…).
+ * TODO: Verify HMAC signature before processing.
  */
 export async function POST(request: NextRequest) {
-  const signature = request.headers.get("x-provider-signature");
+  try {
+    const body = await request.json();
 
-  if (!signature) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Thiếu chữ ký xác thực từ cổng thanh toán đối tác (Missing signature)",
-      },
-      { status: 401 }
-    );
+    // TODO: Verify HMAC signature with process.env.PAYMENT_WEBHOOK_SECRET
+    // const signature = request.headers.get("x-webhook-signature");
+    // const isValid = verifySignature(body, signature, process.env.PAYMENT_WEBHOOK_SECRET!);
+    // if (!isValid) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    console.log("[webhook/payment] Received payload:", body);
+
+    // TODO: Update order payment status in database
+    // await updateOrderPaymentStatus(body.orderId, body.status);
+
+    return NextResponse.json({ received: true });
+  } catch {
+    return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
   }
-
-  // Not Implemented placeholder until live merchant credentials are provided
-  return NextResponse.json(
-    {
-      success: false,
-      message: "Payment webhook endpoint is configured but awaiting live merchant secret keys.",
-    },
-    { status: 501 }
-  );
 }

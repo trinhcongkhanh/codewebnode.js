@@ -8,6 +8,7 @@ import {
   Activity,
   Disc,
   ArrowRight,
+  Sparkles,
 } from "lucide-react";
 import { initialCategories } from "@/data/mockData";
 
@@ -26,19 +27,20 @@ export function CategoryGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
           <div>
-            <span className="text-xs font-bold text-orange-600 uppercase tracking-widest">
-              Phụ Tùng Theo Hệ Thống
-            </span>
+            <div className="inline-flex items-center gap-1.5 text-xs font-black text-orange-600 uppercase tracking-widest">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Phụ Tùng Theo Hệ Thống Kỹ Thuật</span>
+            </div>
             <h2 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
               Danh Mục Phụ Tùng Xe Máy
             </h2>
           </div>
           <Link
             href="/products"
-            className="text-xs font-semibold text-orange-600 hover:text-orange-700 flex items-center gap-1 group"
+            className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1 group"
           >
             <span>Xem tất cả danh mục</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -47,12 +49,12 @@ export function CategoryGrid() {
             <Link
               key={cat.id}
               href={`/products?cat=${cat.slug}`}
-              className="group p-4 rounded-xl border border-slate-200 bg-slate-50/60 hover:bg-white hover:border-orange-500 hover:shadow-md transition-all duration-200 flex flex-col items-center text-center"
+              className="group p-5 rounded-2xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-orange-500/50 hover:shadow-xl hover-lift transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden shine-box"
             >
-              <div className="w-14 h-14 rounded-2xl bg-white group-hover:bg-orange-50 border border-slate-200 group-hover:border-orange-200 flex items-center justify-center mb-3 transition-colors shadow-xs">
+              <div className="w-14 h-14 rounded-2xl bg-white group-hover:bg-orange-50 border border-slate-200 group-hover:border-orange-200 flex items-center justify-center mb-3 transition-all duration-300 shadow-xs group-hover:scale-110 group-hover:rotate-3">
                 {categoryIconMap[cat.id] || <Wrench className="w-6 h-6 text-slate-600" />}
               </div>
-              <h3 className="text-xs font-bold text-slate-900 group-hover:text-orange-600 transition-colors line-clamp-1">
+              <h3 className="text-xs font-black text-slate-900 group-hover:text-orange-600 transition-colors line-clamp-1">
                 {cat.name}
               </h3>
               <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
